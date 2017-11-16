@@ -25,7 +25,9 @@ module.exports.bootstrap = function(cb) {
       var data = {
         soil_moisture : parseInt(values[0]),
         humidity : parseFloat(values[1]),
-        temp : parseFloat(values[2])
+        temp : parseFloat(values[2]),
+        brightness : parseFloat(values[3]),
+        gas : parseFloat(values[4])
       }
       Measure.create(data , function(err){})
     });
