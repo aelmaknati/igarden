@@ -13,7 +13,7 @@ module.exports = {
     brightness: {
       type: 'float',
     },
-    air_quality: {
+    gas: {
       type: 'float',
     }
   }

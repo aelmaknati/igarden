@@ -1,0 +1,44 @@
+<%/**
+* views/partials/inbox-message.ejs
+*
+* An individual inbox message.
+*
+* @needs {Dictionary} message
+*   @property {Number} id
+*   @property {String} subject
+*
+*/%>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa <%=icon %> fa-fw"></i> <%=label %>
+
+  </div>
+  <!-- /.panel-heading -->
+  <div class="panel-body">
+    <canvas id="chart-<%=measure.sensor %>" width="400" height="400"></canvas>
+  </div>
+  <!-- /.panel-body -->
+</div>
+<script>
+  <%-"var chartData="+JSON.stringify(measure.data) %>
+  <%-"var label='"+label+"'" %>
+  <%-"var id='"+measure.sensor+"'" %>
+  <%-"var color='"+measure.color+"'" %>
+  var ctx = document.getElementById("chart-"+id).getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels : labels,
+      datasets: [{
+        data: chartData,
+        label : label,
+        backgroundColor: color,
+        borderColor: color,
+        borderWidth: 1,
+        fill : true
+      }]
+    },
+
+  });
+</script>

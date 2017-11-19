@@ -32,9 +32,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  'get /': 'DashboardController.dashboard',
+  'get /data': 'DashboardController.data',
 
   /***************************************************************************
   *                                                                          *

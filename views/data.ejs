@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" >Date</th>
+      <th scope="col" >Temperature</th>
+      <th scope="col" >Brightness</th>
+      <th scope="col" >Soil moisture</th>
+      <th scope="col" >Humidity</th>
+      <th scope="col" >Gas</th>
+    </tr>
+  </thead>
+  <% for (var i = 0 ; i <data.length ; i++ ){ %>
+    <tr>
+      <td><%=data[i].createdAt %></td>
+      <td><%=data[i].brightness %></td>
+      <td><%=data[i].temp %></td>
+      <td><%=data[i].soil_moisture %></td>
+      <td><%=data[i].humidity %></td>
+      <td><%=data[i].gas %></td>
+    </tr>
+  <%}%>
+</table>

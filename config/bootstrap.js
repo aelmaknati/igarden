@@ -8,33 +8,13 @@
  * For more information on bootstrapping your app, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
+process.env.TZ = 'America/New_York';
 
-const SerialPort = require('serialport');
 
 module.exports.bootstrap = function(cb) {
-
-  var port = new SerialPort('COM6', function (err) {
-    if (err) {
-      return console.log('Error: ', err.message);
-    }
-
-    port.on('data', function (data) {
-      var values = data.toString("utf8");
-      values = values.replace(/\r/g , "")
-      values = values.split("\n");
-      var data = {
-        soil_moisture : parseInt(values[0]),
-        humidity : parseFloat(values[1]),
-        temp : parseFloat(values[2]),
-        brightness : parseFloat(values[3]),
-        gas : parseFloat(values[4])
-      }
-      Measure.create(data , function(err){})
-    });
-
-  });
-
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+
+
   cb();
 };

@@ -29,12 +29,50 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-social.css">
+    <link rel="stylesheet" href="/styles/sb-admin-2.min.css">
+    <link rel="stylesheet" href="/styles/font-awesome.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/metisMenu.min.css">
     <!--STYLES END-->
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery.min.js"></script>
+    <script src="/js/dependencies/Chart.bundle.min.js"></script>
+    <script src="/js/dependencies/bootstrap.min.js"></script>
+    <script src="/js/dependencies/metisMenu.min.js"></script>
+    <script src="/js/dependencies/sb-admin-2.js"></script>
+    <!--SCRIPTS END-->
   </head>
 
   <body>
-    <%- body %>
+    <div id="wrapper">
+
+      <!-- Navigation -->
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-leaf fa-fw"></i> IGARDEN CLOUD V0.1</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <%- partial("top-menu.ejs") %>
+        <!-- /.navbar-top-links -->
+
+        <%- partial("left-menu.ejs") %>
+        <!-- /.navbar-static-side -->
+      </nav>
+
+      <div id="page-wrapper"><%-body %></div>
+      <!-- /#page-wrapper -->
+
+    </div>
 
 
 
@@ -87,8 +125,6 @@
 
     -->
 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <!--SCRIPTS END-->
+
   </body>
 </html>
