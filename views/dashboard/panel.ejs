@@ -9,14 +9,15 @@
 *
 */%>
 
-<div class="panel panel-default">
+<div id="panel-<%=measure.sensor%>" class="panel panel-default">
   <div class="panel-heading">
-    <i class="fa <%=icon %> fa-fw"></i> <%=label %>
-
+    <i class="fa <%=icon %> fa-fw"></i> <a href="/details?sensor=<%=measure.sensor%>"><%=label %></a>
+    <span style="float : right" id="last-value-<%=measure.sensor%>"></span>
+    <a href="#" onclick="maximize('<%=measure.sensor%>')" style="float: right"><i class="glyphicon glyphicon-resize-full"></i></a>
   </div>
   <!-- /.panel-heading -->
   <div class="panel-body">
-    <canvas id="chart-<%=measure.sensor %>" width="400" height="400"></canvas>
+    <canvas id="chart-<%=measure.sensor %>" width="400" height="250"></canvas>
   </div>
   <!-- /.panel-body -->
 </div>
@@ -26,7 +27,7 @@
   <%-"var id='"+measure.sensor+"'" %>
   <%-"var color='"+measure.color+"'" %>
   var ctx = document.getElementById("chart-"+id).getContext('2d');
-  var chart = new Chart(ctx, {
+  charts[id] = new Chart(ctx, {
     type: 'line',
     data: {
       labels : labels,
@@ -41,4 +42,19 @@
     },
 
   });
+  <%if(req.param("freq") == 0){%>
+
+    setInterval(function(){
+      $.get("/data/last" , function(data){
+        var d = new Date(data.createdAt)
+        charts["<%=measure.sensor%>"].data.datasets[0].data.push(data["<%=measure.sensor%>"]);
+        charts["<%=measure.sensor%>"].data.labels.push(d.getHours()+":"+ d.getMinutes());
+        charts["<%=measure.sensor%>"].data.datasets[0].data.splice(0 ,1)
+        charts["<%=measure.sensor%>"].data.labels.splice(0 ,1)
+        charts["<%=measure.sensor%>"].update();
+      })
+
+    } , 180000)
+  <%}%>
+
 </script>

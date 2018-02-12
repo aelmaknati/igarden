@@ -31,9 +31,17 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  'get /login': {
+    view: 'login',
+    locals: {
+      layout: false
+    }
+  } ,
+  'post /login': 'LoginController.login',
   'get /': 'DashboardController.dashboard',
-  'get /data': 'DashboardController.data',
+  'get /data/last': 'DataController.last',
+  'post /data': 'DataController.post',
+  'get /data': 'DataController.list',
 
   /***************************************************************************
   *                                                                          *

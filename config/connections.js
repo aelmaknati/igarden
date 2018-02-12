@@ -93,6 +93,6 @@ module.exports.connections = {
     adapter: 'sails-mongo',
     host: 'localhost', // defaults to `localhost` if omitted
     port: 27017, // defaults to 27017 if omitted
-    database: 'igarden' // or omit if not relevant
+    database: 'igarden2' // or omit if not relevant
   }
 };

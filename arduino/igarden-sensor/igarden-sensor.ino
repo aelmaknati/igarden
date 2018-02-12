@@ -1,5 +1,4 @@
 #include "DHT.h"
-#include <VirtualWire.h>
 
 int SOIL_MOISTURE_PIN=A0;       //Broche Analogique de mesure d'humidité
 int DHT_PIN=7;
@@ -12,7 +11,7 @@ float temperature;
 float brightness;
 float gas;
 
-DHT dht(DHT_PIN, DHT11);
+DHT dht(DHT_PIN, DHT22);
 
 
 typedef struct {
@@ -25,8 +24,6 @@ typedef struct {
 
 void setup(){ 
     Serial.begin(9600); 
-    vw_set_ptt_inverted(true); // Required for DR3100
-    vw_setup(2000);   // Bits per sec
     pinMode(SOIL_MOISTURE_PIN, INPUT); 
     pinMode(DHT_PIN, INPUT); 
     pinMode(PHOTOSENSOR_PIN, INPUT); 
@@ -36,19 +33,16 @@ void setup(){
 
 void loop() { 
   Data data;
-  data.soil_moisture = analogRead(SOIL_MOISTURE_PIN);
+  //data.soil_moisture = analogRead(SOIL_MOISTURE_PIN);
   data.humidity = dht.readHumidity();
   data.temperature = dht.readTemperature();
   data.brightness = analogRead(PHOTOSENSOR_PIN);
-  data.gas = analogRead(MQ2SENSOR_PIN);
-  vw_send((byte*) &data, sizeof(data)); 
-  vw_wait_tx();
-  Serial.println(data.soil_moisture); 
+  //data.gas = analogRead(MQ2SENSOR_PIN);
+  //Serial.println(data.soil_moisture); 
   Serial.println(data.humidity); 
   Serial.println(data.temperature); 
   Serial.println(data.brightness);
-  Serial.println(data.gas);
-  Serial.println("******");
-  delay(1000);  
-  //delay(180000); 
+  //Serial.println(data.gas);
+  //delay(1000);  
+  delay(180000); 
 }

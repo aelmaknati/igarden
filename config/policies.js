@@ -25,8 +25,19 @@ module.exports.policies = {
   * access)                                                                  *
   *                                                                          *
   ***************************************************************************/
+  DashboardController: {
+    dashboard : ["sessionAuth"]
+  },
+  LoginController : {
+    login : []
+  },
+  DataController : {
+    list : ["sessionAuth"],
+    post : ["sessionAuth"],
+    last : ["sessionAuth"],
+  },
 
-  // '*': true,
+  '*': false,
 
   /***************************************************************************
   *                                                                          *

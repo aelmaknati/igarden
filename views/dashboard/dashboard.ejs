@@ -1,25 +1,31 @@
 <script>
   <%-"var labels="+JSON.stringify(labels) %>
+  var charts = {}
 </script>
 <% var url="?filter" %>
-<div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header">Dashboard</h1>
-  </div>
-  <!-- /.col-lg-12 -->
+<div class="row" style="text-align: center">
+
+  <a href="/?freq=0">Real time</a> |
+  <a href="/?freq=4">Last hours</a> |
+  <a href="/?freq=3">Last days</a> |
+  <a href="/?freq=2">Last months</a> |
+  <a href="/?freq=1">Last years</a>
+
 </div>
+<br/>
 <div class="row">
+
   <div class="col-md-4">
-    <%- partial("panel" , {label : "Temperature" , icon : "fa-thermometer-full" ,measure : {sensor : "temp" , data : data.temp , color : "rgba(255 , 0 , 0 , 0.5)" }}) %>
+    <%- partial("panel" , {label : "Temperature" , icon : "fa-thermometer-full" ,measure : {sensor : "temp" , unit : "°", data : data.temp , color : "rgba(255 , 0 , 0 , 0.5)" }}) %>
   </div>
   <div class="col-md-4">
-    <%- partial("panel" , {label : "Brightness" , icon : "fa-sun-o", measure : {sensor : "brightness" , data : data.brightness , color : "rgba( 0, 0 , 255 , 0.5)" }}) %>
+    <%- partial("panel" , {label : "Brightness" , icon : "fa-sun-o", measure : {sensor : "brightness" , unit : "br", data : data.brightness , color : "rgba( 0, 0 , 255 , 0.5)" }}) %>
   </div>
   <div class="col-md-4">
-    <%- partial("panel" , {label : "Soil moisture" ,icon : "fa-tint" , measure : {sensor : "soil_moisture" , data : data.soil_moisture , color : "rgba(105, 178, 65 , 0.5)" }}) %>
+    <%- partial("panel" , {label : "Soil moisture" ,icon : "fa-tint" , measure : {sensor : "soil_moisture" ,unit : "%", data : data.soil_moisture , color : "rgba(105, 178, 65 , 0.5)" }}) %>
   </div>
   <div class="col-md-4">
-    <%- partial("panel" , {label : "Humidity" ,icon : "fa-yelp" ,measure : {sensor : "humidity" , data : data.humidity , color : "rgba( 0, 0 , 0 , 0.5)" }}) %>
+    <%- partial("panel" , {label : "Humidity" ,icon : "fa-yelp" ,measure : {sensor : "humidity" ,unit : "%", data : data.humidity , color : "rgba( 0, 0 , 0 , 0.5)" }}) %>
   </div>
   <div class="col-md-4">
     <%- partial("panel" , {label : "Gas" , icon : "fa-exclamation-circle", measure : {sensor : "gas" , data : data.gas , color : "rgba( 255, 0 , 255 , 0.5)" }}) %>
@@ -31,3 +37,8 @@
 
 
 </div>
+<script>
+  function maximize(id){
+    $("#panel-"+id).parent().removeClass("col-md-4").addClass("col-md-12")
+  }
+</script>

@@ -1,0 +1,9 @@
+{
+  "apps" : [{
+    "name"        : "igarden",
+    "script"      : "/var/node/igarden/app.js",
+    "env": {
+      "NODE_ENV": "prod"
+    }
+  }]
+}

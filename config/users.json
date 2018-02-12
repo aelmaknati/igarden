@@ -1,0 +1,14 @@
+{
+  "aelmaknati" :{
+    "role" : "SUPERUSER",
+    "password" : "e086211h",
+    "first_name" : "Abdellatif",
+    "last_name" : "El Maknati"
+  },
+  "melmaknati" :{
+    "role" : "USER",
+    "password" : "m001515",
+    "first_name" : "Malika",
+    "last_name" : "El Maknati"
+  }
+}

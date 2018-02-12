@@ -3,7 +3,8 @@ var async = require('async');
 
 module.exports = {
 
-  getSensorData : function(filters, cbk) {
+  getMeasures : function(freq, cbk) {
+
 
   },
 
