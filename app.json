@@ -2,8 +2,15 @@
   "apps" : [{
     "name"        : "igarden",
     "script"      : "/var/node/igarden/app.js",
+    "pwd" : "/var/node/igarden",
+    "watch": true,
+    "ignore_watch" : ["node_modules"],
+    "watch_options": {
+      "followSymlinks": false
+    },
     "env": {
       "NODE_ENV": "prod"
     }
+
   }]
 }

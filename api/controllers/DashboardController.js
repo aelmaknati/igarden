@@ -7,7 +7,7 @@
 module.exports = {
 
   dashboard : function(req , res){
-    var freq = req.param("freq") ?  req.param("freq") : 4
+    var freq = req.param("freq") ?  req.param("freq") : 0
     var data = {temp : [] , brightness : [] , soil_moisture : [] , gas : [] , humidity : []}
     var labels = []
     var labelize = function(){}

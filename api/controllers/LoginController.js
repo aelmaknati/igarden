@@ -6,6 +6,14 @@ const users = require("../../config/users.json")
 
 module.exports = {
   login : function (req, res) {
-    console.log(users);
+    var username = req.param("username")
+    var password = req.param("password")
+    if (users[username] && users[username].password == password){
+      req.session.user = users[username]
+      req.session.authenticated = true
+      res.redirect("/")
+    }else{
+      res.redirect("/login")
+    }
   }
 }

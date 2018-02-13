@@ -8,18 +8,20 @@
 *   @property {String} subject
 *
 */%>
-
-<div id="panel-<%=measure.sensor%>" class="panel panel-default">
-  <div class="panel-heading">
-    <i class="fa <%=icon %> fa-fw"></i> <a href="/details?sensor=<%=measure.sensor%>"><%=label %></a>
-    <span style="float : right" id="last-value-<%=measure.sensor%>"></span>
-    <a href="#" onclick="maximize('<%=measure.sensor%>')" style="float: right"><i class="glyphicon glyphicon-resize-full"></i></a>
+<div id="panel-<%=measure.sensor%>" class="col-md-4 sensor-panel">
+  <div  class="panel panel-default">
+    <div class="panel-heading">
+      <i class="fa <%=icon %> fa-fw"></i> <a href="/details?sensor=<%=measure.sensor%>"><%=label %></a>
+      <span style="float : right" id="last-value-<%=measure.sensor%>"></span>
+      <a href="#" class="maximize-lnk" onclick="maximize('<%=measure.sensor%>')" style="float: right"><i class="glyphicon glyphicon-resize-full"></i></a>
+      <a href="#" class="minimize-lnk" onclick="minimize('<%=measure.sensor%>')" style="float: right"><i class="glyphicon glyphicon-resize-small"></i></a>
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <canvas id="chart-<%=measure.sensor %>" width="400" height="250"></canvas>
+    </div>
+    <!-- /.panel-body -->
   </div>
-  <!-- /.panel-heading -->
-  <div class="panel-body">
-    <canvas id="chart-<%=measure.sensor %>" width="400" height="250"></canvas>
-  </div>
-  <!-- /.panel-body -->
 </div>
 <script>
   <%-"var chartData="+JSON.stringify(measure.data) %>
@@ -28,6 +30,8 @@
   <%-"var color='"+measure.color+"'" %>
   var ctx = document.getElementById("chart-"+id).getContext('2d');
   charts[id] = new Chart(ctx, {
+    responsive : true,
+    maintainAspectRatio: false,
     type: 'line',
     data: {
       labels : labels,

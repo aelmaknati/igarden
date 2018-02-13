@@ -1,1 +1,7 @@
+#dashboard .sensor-panel.col-md-4  .panel a.minimize-lnk{
+  display: none;
+}
 
+#dashboard .sensor-panel.col-md-12 .panel a.maximize-lnk{
+  display: none;
+}

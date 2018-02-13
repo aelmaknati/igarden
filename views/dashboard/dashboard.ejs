@@ -13,32 +13,30 @@
 
 </div>
 <br/>
-<div class="row">
+<div class="row" id="dashboard" style="height: calc(100vh - 300px)">
 
-  <div class="col-md-4">
+
     <%- partial("panel" , {label : "Temperature" , icon : "fa-thermometer-full" ,measure : {sensor : "temp" , unit : "°", data : data.temp , color : "rgba(255 , 0 , 0 , 0.5)" }}) %>
-  </div>
-  <div class="col-md-4">
-    <%- partial("panel" , {label : "Brightness" , icon : "fa-sun-o", measure : {sensor : "brightness" , unit : "br", data : data.brightness , color : "rgba( 0, 0 , 255 , 0.5)" }}) %>
-  </div>
-  <div class="col-md-4">
-    <%- partial("panel" , {label : "Soil moisture" ,icon : "fa-tint" , measure : {sensor : "soil_moisture" ,unit : "%", data : data.soil_moisture , color : "rgba(105, 178, 65 , 0.5)" }}) %>
-  </div>
-  <div class="col-md-4">
-    <%- partial("panel" , {label : "Humidity" ,icon : "fa-yelp" ,measure : {sensor : "humidity" ,unit : "%", data : data.humidity , color : "rgba( 0, 0 , 0 , 0.5)" }}) %>
-  </div>
-  <div class="col-md-4">
-    <%- partial("panel" , {label : "Gas" , icon : "fa-exclamation-circle", measure : {sensor : "gas" , data : data.gas , color : "rgba( 255, 0 , 255 , 0.5)" }}) %>
-  </div>
-  <div class="col-md-4">
-    <%- partial("panel" , {label : "Barometric pressure" , icon : "fa-tachometer", measure : {sensor : "pressure" , data : data.pressure , color : "rgba( 244, 244 , 0 , 0.5)" }}) %>
-  </div>
 
+    <%- partial("panel" , {label : "Brightness" , icon : "fa-sun-o", measure : {sensor : "brightness" , unit : "br", data : data.brightness , color : "rgba( 0, 0 , 255 , 0.5)" }}) %>
+
+    <%- partial("panel" , {label : "Soil moisture" ,icon : "fa-tint" , measure : {sensor : "soil_moisture" ,unit : "%", data : data.soil_moisture , color : "rgba(105, 178, 65 , 0.5)" }}) %>
+
+    <%- partial("panel" , {label : "Humidity" ,icon : "fa-yelp" ,measure : {sensor : "humidity" ,unit : "%", data : data.humidity , color : "rgba( 0, 0 , 0 , 0.5)" }}) %>
+
+    <%- partial("panel" , {label : "Gas" , icon : "fa-exclamation-circle", measure : {sensor : "gas" , data : data.gas , color : "rgba( 255, 0 , 255 , 0.5)" }}) %>
+
+    <%- partial("panel" , {label : "Barometric pressure" , icon : "fa-tachometer", measure : {sensor : "pressure" , data : data.pressure , color : "rgba( 244, 244 , 0 , 0.5)" }}) %>
 
 
 </div>
 <script>
   function maximize(id){
-    $("#panel-"+id).parent().removeClass("col-md-4").addClass("col-md-12")
+    $(".sensor-panel").hide()
+    $("#panel-"+id).show().removeClass("col-md-4").addClass("col-md-12")
+  }
+  function minimize(id){
+    $(".sensor-panel").show()
+    $("#panel-"+id).removeClass("col-md-12").addClass("col-md-4")
   }
 </script>
